@@ -53,28 +53,28 @@
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* bigger boxes */
+    gap: 10px;
     margin: 20px;
   }
 
   .box {
     position: relative;
-    width: 100px;
-    height: 140px;
+    width: 180px; /* bigger width */
+    height: 220px; /* bigger height */
     border-radius: 10px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 3px;
+    padding: 5px;
     cursor: pointer;
     animation: galaxy 12s infinite alternate ease-in-out;
   }
 
   .box img {
     width: 100%;
-    height: 90px;
+    height: 140px;
     object-fit: cover;
     border-radius: 5px;
   }
@@ -83,8 +83,8 @@
     background-color: rgba(255,255,255,0.8);
     border: none;
     border-radius: 5px;
-    padding: 4px;
-    font-size: 11px;
+    padding: 6px;
+    font-size: 13px;
     cursor: pointer;
     text-align: center;
   }
