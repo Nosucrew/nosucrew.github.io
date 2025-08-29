@@ -56,15 +56,16 @@
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
     margin: 20px;
+    justify-items: center;
   }
 
   .box {
     position: relative;
-    width: 180px;
-    height: 220px;
+    width: 200px;
+    height: 240px;
     border-radius: 10px;
     overflow: hidden;
     display: flex;
@@ -77,7 +78,7 @@
 
   .box img {
     width: 100%;
-    height: 140px;
+    height: 160px;
     object-fit: cover;
     border-radius: 5px;
   }
@@ -145,18 +146,17 @@ proceedBtn.addEventListener('click', () => {
   overlay.style.display = 'none';
 });
 
-// GitHub raw image links
+// GitHub raw image links (5 images)
 const skaterImages = [
   'https://raw.githubusercontent.com/Nosucrew/skaters.github.io/main/Epic%20Swag.jpg',
   'https://raw.githubusercontent.com/Nosucrew/skaters.github.io/main/Girls%20Love%20Me.png',
   'https://raw.githubusercontent.com/Nosucrew/skaters.github.io/main/IMG-4297.jpg',
-  'https://raw.githubusercontent.com/Nosucrew/skaters.github.io/main/Metallica.png'
+  'https://raw.githubusercontent.com/Nosucrew/skaters.github.io/main/Metallica.png',
+  'https://raw.githubusercontent.com/Nosucrew/skaters.github.io/main/rainbowlikeaboss.png'
 ];
 
-const totalBoxes = 500;
-
-// Create the boxes
-for(let i = 0; i < totalBoxes; i++){
+// Create 5 big boxes
+for(let i = 0; i < skaterImages.length; i++){
   const box = document.createElement('div');
   box.className = 'box';
 
@@ -165,7 +165,7 @@ for(let i = 0; i < totalBoxes; i++){
   box.appendChild(stars);
 
   const img = document.createElement('img');
-  img.src = skaterImages[i % skaterImages.length]; // repeat images 1-4
+  img.src = skaterImages[i];
   img.alt = `Skater ${i + 1}`;
   box.appendChild(img);
 
