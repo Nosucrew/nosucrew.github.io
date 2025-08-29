@@ -36,7 +36,7 @@
     }
   </style>
 </head>
-<body>
+<body class="text-gray-100">
 
   <!-- Terms of Service Overlay -->
   <div id="tosOverlay" class="fixed inset-0 bg-black/90 flex flex-col items-center justify-center z-50">
@@ -124,75 +124,26 @@
   </div>
 
   <!-- PS3 Modal -->
-  <div id="ps3Modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
-    <div class="bg-gray-900 rounded-2xl p-6 max-w-2xl w-full relative">
+  <div id="ps3Modal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50">
+    <div class="bg-gray-900 rounded-2xl p-6 max-w-2xl w-full relative text-gray-100">
       <button onclick="closePS3Modal()" class="absolute top-3 right-3 text-gray-300 hover:text-red-500 text-2xl font-bold">&times;</button>
       <h3 class="text-2xl font-bold text-green-400 mb-6 text-center">PS3 Games</h3>
       <div class="grid md:grid-cols-3 gap-4">
-        <div onclick="expandBox(this)" class="bg-gray-800 p-4 rounded-xl text-center cursor-pointer hover:bg-gray-700 transition">Skate 3</div>
-        <div onclick="expandBox(this)" class="bg-gray-800 p-4 rounded-xl text-center cursor-pointer hover:bg-gray-700 transition">Black Ops 2</div>
-        <div onclick="expandBox(this)" class="bg-gray-800 p-4 rounded-xl text-center cursor-pointer hover:bg-gray-700 transition">Black Ops 1</div>
-        <div class="bg-gray-700 p-4 rounded-xl text-center text-gray-400 cursor-not-allowed">More Coming Soon...</div>
+        <div onclick="expandBox(this)" class="bg-gray-800 text-gray-100 p-4 rounded-xl text-center cursor-pointer hover:bg-gray-700 transition">Skate 3</div>
+        <div onclick="expandBox(this)" class="bg-gray-800 text-gray-100 p-4 rounded-xl text-center cursor-pointer hover:bg-gray-700 transition">Black Ops 2</div>
+        <div onclick="expandBox(this)" class="bg-gray-800 text-gray-100 p-4 rounded-xl text-center cursor-pointer hover:bg-gray-700 transition">Black Ops 1</div>
+        <div class="bg-gray-700 text-gray-400 p-4 rounded-xl text-center cursor-not-allowed">More Coming Soon...</div>
       </div>
     </div>
   </div>
 
   <!-- Tools Modal -->
-  <div id="toolsModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
-    <div class="bg-red-800 rounded-2xl p-6 max-w-2xl w-full relative">
+  <div id="toolsModal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50">
+    <div class="bg-red-800 rounded-2xl p-6 max-w-2xl w-full relative text-gray-100">
       <button onclick="closeToolsModal()" class="absolute top-3 right-3 text-gray-100 hover:text-white text-2xl font-bold">&times;</button>
       <h3 class="text-2xl font-bold text-white mb-6 text-center">Tools</h3>
       <div class="grid md:grid-cols-3 gap-4">
-        <div onclick="expandBox(this)" class="bg-red-700 p-4 rounded-xl text-center cursor-pointer hover:bg-red-600 transition">Tool 1</div>
-        <div onclick="expandBox(this)" class="bg-red-700 p-4 rounded-xl text-center cursor-pointer hover:bg-red-600 transition">Tool 2</div>
-        <div onclick="expandBox(this)" class="bg-red-700 p-4 rounded-xl text-center cursor-pointer hover:bg-red-600 transition">Tool 3</div>
-        <div class="bg-red-600 p-4 rounded-xl text-center text-gray-200 cursor-not-allowed">More Coming Soon...</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script>
-    // Lightning bolts
-    function spawnBolt() {
-      const bolt = document.createElement('div');
-      bolt.classList.add('bolt');
-      bolt.style.left = Math.random() * window.innerWidth + 'px';
-      bolt.style.height = 20 + Math.random() * 30 + 'px';
-      bolt.style.animationDuration = (1 + Math.random()*1.5) + 's';
-      document.body.appendChild(bolt);
-      bolt.addEventListener('animationend', () => bolt.remove());
-    }
-    setInterval(spawnBolt, 300);
-
-    // TOS
-    function showTerms() {
-      document.getElementById('tosContent').classList.remove('hidden');
-    }
-    function acceptTerms() {
-      document.getElementById('tosOverlay').classList.add('hidden');
-      document.getElementById('siteContent').classList.remove('hidden');
-    }
-
-    // PS3 Modal
-    function openPS3Modal() { document.getElementById('ps3Modal').classList.remove('hidden'); }
-    function closePS3Modal() { document.getElementById('ps3Modal').classList.add('hidden'); }
-
-    // Tools Modal
-    function openToolsModal() { document.getElementById('toolsModal').classList.remove('hidden'); }
-    function closeToolsModal() { document.getElementById('toolsModal').classList.add('hidden'); }
-
-    // Expand box effect
-    function expandBox(el) {
-      el.style.transition = 'all 0.4s ease';
-      el.style.transform = 'scale(1.2)';
-      el.style.zIndex = '100';
-      setTimeout(() => {
-        el.style.transform = 'scale(1)';
-        el.style.zIndex = '1';
-      }, 4000);
-    }
-  </script>
-
-</body>
-</html>
+        <div onclick="expandBox(this)" class="bg-red-700 text-white p-4 rounded-xl text-center cursor-pointer hover:bg-red-600 transition">Tool 1</div>
+        <div onclick="expandBox(this)" class="bg-red-700 text-white p-4 rounded-xl text-center cursor-pointer hover:bg-red-600 transition">Tool 2</div>
+        <div onclick="expandBox(this)" class="bg-red-700 text-white p-4 rounded-xl text-center cursor-pointer hover:bg-red-600 transition">Tool 3</div>
+        <div class="bg-red-600 text-gray-200 p-4 rounded-xl text-center cursor-not-allowed">More Coming Soon
