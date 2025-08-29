@@ -38,7 +38,6 @@
 </head>
 <body>
 
-  <!-- Terms of Service Overlay -->
   <div id="tosOverlay" class="fixed inset-0 bg-black/90 flex flex-col items-center justify-center z-50">
     <h2 class="text-4xl font-bold mb-6 text-green-400 drop-shadow-lg">Welcome to Nosucrew's Place</h2>
     <button onclick="showTerms()" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl text-white shadow-lg transition">View Terms of Service</button>
@@ -81,21 +80,33 @@
 
     <!-- Games Section -->
     <section id="games" class="container mx-auto py-16 px-6">
-      <h3 class="text-3xl font-semibold text-center mb-10">Available Mods</h3>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-gray-900/70 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
-          <h4 class="text-xl font-bold text-green-400 mb-4">PS3 Mods</h4>
-          <p class="text-gray-300 mb-4">Check out available PS3 games.</p>
-          <a href="https://your-games-page-link.com" target="_blank" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-xl text-white shadow-md transition text-lg">
-            👀 Look 👀
-          </a>
+      <h3 class="text-3xl font-semibold text-center mb-10">Available PS3 Mods</h3>
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Skate 3 -->
+        <a href="skate3.html" class="block bg-gray-900/70 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
+          <h4 class="text-xl font-bold text-green-400 mb-2">Skate 3</h4>
+          <p class="text-gray-300">Click to view mods</p>
+        </a>
+
+        <!-- Black Ops 2 -->
+        <a href="blackops2.html" class="block bg-gray-900/70 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
+          <h4 class="text-xl font-bold text-green-400 mb-2">Black Ops 2</h4>
+          <p class="text-gray-300">Click to view mods</p>
+        </a>
+
+        <!-- Black Ops 1 -->
+        <a href="blackops1.html" class="block bg-gray-900/70 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
+          <h4 class="text-xl font-bold text-green-400 mb-2">Black Ops 1</h4>
+          <p class="text-gray-300">Click to view mods</p>
+        </a>
+
+        <!-- More Coming Soon -->
+        <div class="bg-gray-800/70 rounded-2xl p-6 text-center shadow-lg opacity-60">
+          <h4 class="text-xl font-bold text-gray-400 mb-2">More Coming Soon...</h4>
+          <p class="text-gray-400">Stay tuned for more!</p>
         </div>
 
-        <div class="bg-gray-800/70 rounded-2xl p-6 text-center shadow-lg opacity-60">
-          <h4 class="text-xl font-bold text-gray-400 mb-4">More Platforms</h4>
-          <p class="text-gray-400 mb-4">Mods for other platforms are coming soon.</p>
-          <button disabled class="bg-gray-600 px-4 py-2 rounded-xl text-white">Coming Soon</button>
-        </div>
       </div>
     </section>
 
