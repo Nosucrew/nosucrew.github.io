@@ -137,10 +137,10 @@ proceedBtn.addEventListener('click', () => {
   overlay.style.display = 'none';
 });
 
-// First 5 images with their ZIP files
+// First 5 images, some ZIPs exist
 const specialItems = [
-  {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Epic%20Swag.jpg', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/EpicSwag.zip'},
-  {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Girls%20Love%20Me.png', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/GirlsLoveMe.zip'},
+  {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Epic%20Swag.jpg', zip: null},
+  {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Girls%20Love%20Me.png', zip: null},
   {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/IMG-4297.jpg', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/ARIKA.zip'},
   {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Metallica.png', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Metallica%20(1).zip'},
   {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/rainbowlikeaboss.png', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/RainbowLikeABoss%20(2).zip'}
@@ -158,25 +158,27 @@ for(let i=0; i<totalBoxes; i++){
   box.appendChild(stars);
 
   const img = document.createElement('img');
+  let zip = null;
+
   if(i < specialItems.length){
     img.src = specialItems[i].img;
+    zip = specialItems[i].zip;
     img.alt = `Skater ${i+1}`;
   } else {
     img.src = stockImage;
     img.alt = `Skater ${i+1}`;
   }
+
   box.appendChild(img);
 
   const btn = document.createElement('a');
   btn.className = 'download-btn';
-  if(i < specialItems.length){
-    btn.href = specialItems[i].zip;
+  if(zip){
+    btn.href = zip;
     btn.download = '';
     btn.innerText = 'Download ZIP';
   } else {
-    btn.href = '#';
-    btn.onclick = () => alert(`No file to download for Skater ${i+1}`);
-    btn.innerText = 'Download';
+    btn.style.display = 'none'; // hide button if no file
   }
   box.appendChild(btn);
 
