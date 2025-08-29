@@ -137,10 +137,10 @@ proceedBtn.addEventListener('click', () => {
   overlay.style.display = 'none';
 });
 
-// First 5 images, some ZIPs exist
+// First 5 images and their download links
 const specialItems = [
-  {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Epic%20Swag.jpg', zip: null},
-  {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Girls%20Love%20Me.png', zip: null},
+  {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Epic%20Swag.jpg', zip: 'https://github.com/Nosucrew/nosucrew.github.io/blob/main/Epic-Swag-Red-Glow-White-Skin.rar'},
+  {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Girls%20Love%20Me.png', zip: 'https://github.com/Nosucrew/nosucrew.github.io/blob/main/Girls-Love-Me-Green-Glow-Black-Skin.rar'},
   {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/IMG-4297.jpg', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/ARIKA.zip'},
   {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Metallica.png', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Metallica%20(1).zip'},
   {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/rainbowlikeaboss.png', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/RainbowLikeABoss%20(2).zip'}
@@ -175,10 +175,10 @@ for(let i=0; i<totalBoxes; i++){
   btn.className = 'download-btn';
   if(zip){
     btn.href = zip;
-    btn.download = '';
-    btn.innerText = 'Download ZIP';
+    btn.target = '_blank';
+    btn.innerText = 'Download';
   } else {
-    btn.style.display = 'none'; // hide button if no file
+    btn.style.display = 'none';
   }
   box.appendChild(btn);
 
