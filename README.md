@@ -80,32 +80,22 @@
 
     <!-- Games Section -->
     <section id="games" class="container mx-auto py-16 px-6">
-      <h3 class="text-3xl font-semibold text-center mb-10">Available PS3 Mods</h3>
-      <div class="grid md:grid-cols-3 gap-6">
+      <h3 class="text-3xl font-semibold text-center mb-10">Available Content</h3>
+      <div class="grid md:grid-cols-2 gap-6 justify-center">
 
-        <!-- Skate 3 -->
-        <a href="skate3.html" class="block bg-gray-900/70 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
-          <h4 class="text-xl font-bold text-green-400 mb-2">Skate 3</h4>
-          <p class="text-gray-300">Click to view mods</p>
+        <!-- PS3 Mods Box -->
+        <a href="ps3.html" class="block bg-gray-900/70 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
+          <h4 class="text-xl font-bold text-green-400 mb-2">PS3 Mods</h4>
+          <p class="text-gray-300 mb-4">Click to view games</p>
+          <span class="text-lg">👀 Look 👀</span>
         </a>
 
-        <!-- Black Ops 2 -->
-        <a href="blackops2.html" class="block bg-gray-900/70 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
-          <h4 class="text-xl font-bold text-green-400 mb-2">Black Ops 2</h4>
-          <p class="text-gray-300">Click to view mods</p>
+        <!-- Tools Box -->
+        <a href="tools.html" class="block bg-red-700/80 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
+          <h4 class="text-xl font-bold text-white mb-2">Tools</h4>
+          <p class="text-gray-200 mb-4">Click to view tools</p>
+          <span class="text-lg">👀 Look 👀</span>
         </a>
-
-        <!-- Black Ops 1 -->
-        <a href="blackops1.html" class="block bg-gray-900/70 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
-          <h4 class="text-xl font-bold text-green-400 mb-2">Black Ops 1</h4>
-          <p class="text-gray-300">Click to view mods</p>
-        </a>
-
-        <!-- More Coming Soon -->
-        <div class="bg-gray-800/70 rounded-2xl p-6 text-center shadow-lg opacity-60">
-          <h4 class="text-xl font-bold text-gray-400 mb-2">More Coming Soon...</h4>
-          <p class="text-gray-400">Stay tuned for more!</p>
-        </div>
 
       </div>
     </section>
