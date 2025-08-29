@@ -13,7 +13,6 @@ body {
   color: white;
   position: relative;
 }
-
 body::after {
   content: '';
   position: fixed;
@@ -24,8 +23,6 @@ body::after {
   background: rgba(0,0,0,0.3);
   z-index: -1;
 }
-
-/* Consent Overlay */
 #consentOverlay {
   position: fixed;
   top: 0;
@@ -38,20 +35,17 @@ body::after {
   align-items: center;
   z-index: 9999;
 }
-
 #consentOverlayContent {
   text-align: center;
   max-width: 400px;
   width: 100%;
 }
-
 #consentOverlayContent label {
   display: block;
   margin: 15px 0;
   font-size: 16px;
   cursor: pointer;
 }
-
 #consentOverlayContent button {
   padding: 10px 20px;
   font-size: 16px;
@@ -61,8 +55,6 @@ body::after {
   background-color: #1e3c72;
   color: white;
 }
-
-/* Grid Layout */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -71,8 +63,6 @@ body::after {
   justify-items: center;
   margin-top: 20px;
 }
-
-/* Box Styles */
 .box {
   position: relative;
   width: 200px;
@@ -86,14 +76,12 @@ body::after {
   cursor: pointer;
   background: rgba(30,60,114,0.3);
 }
-
 .box img {
   width: 100%;
   height: 150px;
   object-fit: cover;
   border-radius: 5px;
 }
-
 .download-btn {
   padding: 6px;
   font-size: 13px;
@@ -106,10 +94,7 @@ body::after {
   color: black;
   display: block;
   margin-top: 5px;
-  text-align: center;
 }
-
-/* Stars overlay */
 .stars {
   position: absolute;
   width: 100%;
@@ -123,7 +108,6 @@ body::after {
 </head>
 <body>
 
-<!-- Consent Overlay -->
 <div id="consentOverlay">
   <div id="consentOverlayContent">
     <h2>Disclaimer & Terms</h2>
@@ -145,42 +129,27 @@ const proceedBtn = document.getElementById('proceedBtn');
 const overlay = document.getElementById('consentOverlay');
 const grid = document.getElementById('grid');
 
-// Enable proceed button only if checkbox is checked
 checkbox.addEventListener('change', () => {
   proceedBtn.disabled = !checkbox.checked;
 });
 
-// Hide overlay on proceed
 proceedBtn.addEventListener('click', () => {
   overlay.style.display = 'none';
 });
 
-// Map 5 images to their ZIP files
-const items = [
-  {
-    img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Epic%20Swag.jpg',
-    zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/EpicSwag.zip'
-  },
-  {
-    img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Girls%20Love%20Me.png',
-    zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/GirlsLoveMe.zip'
-  },
-  {
-    img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/IMG-4297.jpg',
-    zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/ARIKA.zip'
-  },
-  {
-    img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Metallica.png',
-    zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Metallica%20(1).zip'
-  },
-  {
-    img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/rainbowlikeaboss.png',
-    zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/RainbowLikeABoss%20(2).zip'
-  }
+// First 5 images with their ZIP files
+const specialItems = [
+  {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Epic%20Swag.jpg', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/EpicSwag.zip'},
+  {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Girls%20Love%20Me.png', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/GirlsLoveMe.zip'},
+  {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/IMG-4297.jpg', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/ARIKA.zip'},
+  {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Metallica.png', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Metallica%20(1).zip'},
+  {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/rainbowlikeaboss.png', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/RainbowLikeABoss%20(2).zip'}
 ];
 
-// Create boxes for all items
-items.forEach(item => {
+const stockImage = 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/soon.jpg';
+const totalBoxes = 500;
+
+for(let i=0; i<totalBoxes; i++){
   const box = document.createElement('div');
   box.className = 'box';
 
@@ -189,19 +158,30 @@ items.forEach(item => {
   box.appendChild(stars);
 
   const img = document.createElement('img');
-  img.src = item.img;
-  img.alt = 'Skater Image';
+  if(i < specialItems.length){
+    img.src = specialItems[i].img;
+    img.alt = `Skater ${i+1}`;
+  } else {
+    img.src = stockImage;
+    img.alt = `Skater ${i+1}`;
+  }
   box.appendChild(img);
 
   const btn = document.createElement('a');
   btn.className = 'download-btn';
-  btn.href = item.zip;
-  btn.download = '';
-  btn.innerText = 'Download ZIP';
+  if(i < specialItems.length){
+    btn.href = specialItems[i].zip;
+    btn.download = '';
+    btn.innerText = 'Download ZIP';
+  } else {
+    btn.href = '#';
+    btn.onclick = () => alert(`No file to download for Skater ${i+1}`);
+    btn.innerText = 'Download';
+  }
   box.appendChild(btn);
 
   grid.appendChild(box);
-});
+}
 </script>
 
 </body>
