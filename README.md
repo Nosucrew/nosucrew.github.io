@@ -14,7 +14,7 @@ body {
   position: relative;
 }
 
-/* Dark overlay for readability */
+/* Optional overlay to make text readable but keep background visible */
 body::after {
   content: '';
   position: fixed;
@@ -22,7 +22,7 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.3); /* reduced opacity so background shows */
   z-index: -1;
 }
 
@@ -85,6 +85,7 @@ body::after {
   justify-content: space-between;
   padding: 5px;
   cursor: pointer;
+  background: rgba(30,60,114,0.3); /* semi-transparent background so main background shows */
   animation: galaxy 12s infinite alternate ease-in-out;
 }
 
@@ -105,13 +106,13 @@ body::after {
   text-align: center;
 }
 
-/* Galaxy animation */
+/* Galaxy animation for box background overlay */
 @keyframes galaxy {
-  0% { background: linear-gradient(135deg, #1e3c72, #2a5298); }
-  25% { background: linear-gradient(135deg, #1e3c72, #00ffcc); }
-  50% { background: linear-gradient(135deg, #1e3c72, #ff00ff); }
-  75% { background: linear-gradient(135deg, #1e3c72, #00ffff); }
-  100% { background: linear-gradient(135deg, #1e3c72, #2a5298); }
+  0% { background: rgba(30,60,114,0.3); }
+  25% { background: rgba(0,255,204,0.2); }
+  50% { background: rgba(255,0,255,0.2); }
+  75% { background: rgba(0,255,255,0.2); }
+  100% { background: rgba(30,60,114,0.3); }
 }
 
 /* Stars overlay */
