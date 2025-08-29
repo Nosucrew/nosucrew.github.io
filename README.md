@@ -25,18 +25,21 @@
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
   }
 
-  #consentOverlay label {
+  #consentOverlayContent {
+    max-width: 400px;
+    text-align: center;
+  }
+
+  #consentOverlayContent label {
     display: block;
     margin: 15px 0;
     font-size: 16px;
+    cursor: pointer;
   }
 
-  #consentOverlay button {
+  #consentOverlayContent button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -53,15 +56,15 @@
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* bigger boxes */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 10px;
     margin: 20px;
   }
 
   .box {
     position: relative;
-    width: 180px; /* bigger width */
-    height: 220px; /* bigger height */
+    width: 180px;
+    height: 220px;
     border-radius: 10px;
     overflow: hidden;
     display: flex;
@@ -112,13 +115,15 @@
 
 <!-- Consent Overlay -->
 <div id="consentOverlay">
-  <h2>Disclaimer & Terms</h2>
-  <p>Some content may be sensitive, offensive, or disturbing to some viewers.</p>
-  <label>
-    <input type="checkbox" id="consentCheckbox">
-    I have read and accept the terms
-  </label>
-  <button id="proceedBtn" disabled>Proceed</button>
+  <div id="consentOverlayContent">
+    <h2>Disclaimer & Terms</h2>
+    <p>Some content may be sensitive, offensive, or disturbing to some viewers.</p>
+    <label>
+      <input type="checkbox" id="consentCheckbox" style="margin-right:5px;">
+      I have read and accept the terms
+    </label>
+    <button id="proceedBtn" disabled>Proceed</button>
+  </div>
 </div>
 
 <h1>Skater Files Download</h1>
