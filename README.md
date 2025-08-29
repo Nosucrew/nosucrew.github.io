@@ -8,8 +8,22 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: black;
+  background: url('https://images.unsplash.com/photo-1613473743286-3d60f590e5f3?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+  background-size: cover;
   color: white;
+  position: relative;
+}
+
+/* Dark overlay for readability */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
 }
 
 /* Consent Overlay */
@@ -108,7 +122,7 @@ body {
   pointer-events: none;
   background-image: radial-gradient(white 1px, transparent 1px);
   background-size: 5px 5px;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 </style>
 </head>
