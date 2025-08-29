@@ -5,30 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nosucrew's Place</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    /* Lightning background */
+    /* Thunderstorm background */
     body {
-      background: radial-gradient(circle, #39ff14 2px, transparent 3px), #111;
-      background-size: 60px 60px;
-      animation: flicker 2s infinite alternate;
+      margin: 0;
+      padding: 0;
+      background: #0b0c10;
+      overflow-x: hidden;
+      position: relative;
     }
-    @keyframes flicker {
-      0% { background-color: #1a0000; }
-      100% { background-color: #330000; }
+
+    .lightning {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      pointer-events: none;
+      animation: thunder 4s infinite;
     }
-    html {
-      scroll-behavior: smooth;
+
+    @keyframes thunder {
+      0%, 95%, 100% { background: transparent; }
+      96% { background: rgba(255,255,255,0.3); }
+      97% { background: transparent; }
+      98% { background: rgba(255,255,255,0.5); }
+      99% { background: transparent; }
     }
   </style>
 </head>
-<body class="text-gray-100 font-sans">
+<body class="text-gray-100 font-sans relative">
+
+  <div class="lightning"></div>
 
   <!-- Terms of Service Overlay -->
   <div id="tosOverlay" class="fixed inset-0 bg-black/90 flex flex-col items-center justify-center z-50">
     <h2 class="text-4xl font-bold mb-6 text-green-400 drop-shadow-lg">Welcome to Nosucrew's Place</h2>
     <button onclick="showTerms()" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl text-white shadow-lg transition">View Terms of Service</button>
 
-    <div id="tosContent" class="hidden bg-gray-900 mt-8 p-6 rounded-xl max-w-lg text-left shadow-lg animate-fade-in">
+    <div id="tosContent" class="hidden bg-gray-900 mt-8 p-6 rounded-xl max-w-lg text-left shadow-lg">
       <h3 class="text-2xl font-semibold mb-4 text-blue-400">Terms of Service</h3>
       <ul class="list-disc pl-6 text-gray-300 space-y-2">
         <li>Use at your own risk.</li>
@@ -41,54 +57,52 @@
   </div>
 
   <!-- Main Site -->
-  <div id="siteContent" class="hidden">
+  <div id="siteContent" class="hidden relative z-10">
     <!-- Navbar -->
     <nav class="bg-gray-900/80 backdrop-blur shadow-md p-4 sticky top-0 z-40">
       <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-green-400">Nosucrew's Place</h1>
-        <div class="flex items-center space-x-6">
-          <a href="#games" class="hover:text-green-300 transition">Games</a>
+        <h1 class="text-2xl font-bold text-green-400 flex items-center space-x-2">
+          Nosucrew's Place
+          <!-- YouTube Icon -->
+          <a href="https://www.youtube.com/@Nosucrew" target="_blank" class="text-red-600 hover:text-red-700 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="lucide lucide-youtube"><path d="M22.54 6.42a2.8 2.8 0 0 0-1.97-1.97C18.35 4 12 4 12 4s-6.35 0-8.57.45a2.8 2.8 0 0 0-1.97 1.97A29.73 29.73 0 0 0 1 12a29.73 29.73 0 0 0 .46 5.58 2.8 2.8 0 0 0 1.97 1.97C5.65 20 12 20 12 20s6.35 0 8.57-.45a2.8 2.8 0 0 0 1.97-1.97A29.73 29.73 0 0 0 23 12a29.73 29.73 0 0 0-.46-5.58ZM10 15V9l5 3-5 3Z"></path></svg>
+          </a>
+        </h1>
+        <div class="hidden md:flex space-x-6">
+          <button onclick="toggleMenu()" class="hover:text-green-300 transition">Games</button>
           <a href="#about" class="hover:text-green-300 transition">About</a>
           <a href="#contact" class="hover:text-green-300 transition">Contact</a>
-          <!-- YouTube link -->
-          <a href="https://www.youtube.com/@Nosucrew" target="_blank" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-xl text-white shadow-md transition">YouTube</a>
         </div>
       </div>
     </nav>
 
+    <!-- Dropdown Modal -->
+    <div id="gameMenu" class="hidden fixed inset-0 bg-black/70 backdrop-blur flex items-center justify-center z-50">
+      <div class="bg-gray-900 rounded-2xl p-8 max-w-md w-full text-center space-y-4 shadow-lg">
+        <h3 class="text-2xl font-bold text-green-400 mb-4">PS3 Mods</h3>
+        <ul class="text-gray-300 space-y-2">
+          <li>Skate 3</li>
+          <li>Black Ops 2</li>
+          <li>Black Ops 1</li>
+          <li>More Coming Soon...</li>
+        </ul>
+        <button onclick="closeMenu()" class="mt-6 bg-red-600 hover:bg-red-700 px-6 py-3 rounded-xl text-white shadow-lg transition">Close</button>
+      </div>
+    </div>
+
     <!-- Hero Section -->
     <header class="text-center py-20 bg-gradient-to-b from-gray-800/70 to-transparent">
       <h2 class="text-5xl font-bold mb-4 text-green-400 drop-shadow-lg">Welcome to Nosucrew's Place</h2>
-      <p class="text-lg text-gray-200">Mods, tools, and cool resources – made by Nosucrew.</p>
-      <a href="#games" class="mt-6 inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl shadow-lg transition">Explore Mods</a>
+      <p class="text-lg text-gray-200">Download and explore mods, tools, and game resources shared here.</p>
+      <button onclick="toggleMenu()" class="mt-6 inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl shadow-lg transition">Explore PS3 Mods</button>
     </header>
-
-    <!-- Games Section -->
-    <section id="games" class="container mx-auto py-16 px-6">
-      <h3 class="text-3xl font-semibold text-center mb-10">Available Mods</h3>
-      <div class="grid md:grid-cols-3 gap-8">
-        
-        <!-- PS3 Card -->
-        <div class="bg-gray-900/70 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
-          <h4 class="text-xl font-bold text-green-400 mb-4">PS3 Mods</h4>
-          <p class="text-gray-300 mb-4">Custom mod menus and tools for PS3.</p>
-          <button class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-xl text-white shadow-md">Download</button>
-        </div>
-
-        <!-- Coming Soon -->
-        <div class="bg-gray-800/70 rounded-2xl p-6 text-center shadow-lg opacity-60">
-          <h4 class="text-xl font-bold text-gray-400 mb-4">More Platforms</h4>
-          <p class="text-gray-400 mb-4">Mods for other platforms are coming soon.</p>
-          <button disabled class="bg-gray-600 px-4 py-2 rounded-xl text-white">Coming Soon</button>
-        </div>
-
-      </div>
-    </section>
 
     <!-- About Section -->
     <section id="about" class="bg-gray-900/70 py-16 px-6 text-center">
       <h3 class="text-3xl font-semibold mb-6">About</h3>
-      <p class="max-w-2xl mx-auto text-gray-300">Hey! I'm Nosucrew 👋 This is my spot to share mods, tools, and fun stuff I've built. Everything here is free to use – I just hope you enjoy playing with them as much as I enjoyed making them!</p>
+      <p class="max-w-2xl mx-auto text-gray-300">
+        Hey! I'm Nosucrew 👋 This is my place to share mods, tools, and resources for games. Everything here is free to use – enjoy exploring and playing with them!
+      </p>
     </section>
 
     <!-- Contact Section -->
@@ -111,6 +125,12 @@
     function acceptTerms() {
       document.getElementById('tosOverlay').classList.add('hidden');
       document.getElementById('siteContent').classList.remove('hidden');
+    }
+    function toggleMenu() {
+      document.getElementById('gameMenu').classList.toggle('hidden');
+    }
+    function closeMenu() {
+      document.getElementById('gameMenu').classList.add('hidden');
     }
   </script>
 </body>
