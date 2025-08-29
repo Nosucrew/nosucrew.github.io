@@ -1,149 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nosucrew's Place</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #0b0c10;
-      overflow-x: hidden;
-      font-family: sans-serif;
-      color: #f0f0f0;
-      position: relative;
-    }
-
-    /* Falling lightning */
-    .bolt {
-      position: absolute;
-      width: 2px;
-      height: 20px;
-      background: white;
-      opacity: 0.8;
-      top: -20px;
-      animation: fall linear forwards;
-    }
-
-    @keyframes fall {
-      to {
-        top: 100%;
-        transform: scaleY(0.1);
-        opacity: 0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxy Skater Hub</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+<style>
+  body { 
+    background: radial-gradient(circle at 50% 0%, #0d0d0d, #111 80%);
+    color: #f0f0f0; 
+    font-family: Arial, sans-serif; 
+    overflow-x: hidden;
+  }
+  h1,h2,h3,h4 { font-family: 'Bangers', cursive; }
+  .skater-card { 
+    min-width: 220px; 
+    flex-shrink: 0; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    border: 2px solid transparent; 
+  }
+  .skater-card:hover { 
+    transform: translateY(-5px) rotate(-1deg); 
+    box-shadow: 0 10px 20px rgba(0,255,255,0.5); 
+    border-color: cyan; 
+  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
 </head>
 <body class="text-gray-100">
 
-  <!-- Terms of Service Overlay -->
-  <div id="tosOverlay" class="fixed inset-0 bg-black/90 flex flex-col items-center justify-center z-50">
-    <h2 class="text-4xl font-bold mb-6 text-green-400 drop-shadow-lg">Welcome to Nosucrew's Place</h2>
-    <button onclick="showTerms()" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl text-white shadow-lg transition">View Terms of Service</button>
+<!-- Terms of Service Overlay -->
+<div id="tosOverlay" class="fixed inset-0 bg-black/90 flex flex-col items-center justify-center z-50 px-4">
+  <h2 class="text-4xl font-bold mb-6 text-green-400 drop-shadow-lg text-center">Welcome to Galaxy Skater Hub</h2>
+  <p class="text-gray-300 max-w-lg text-center mb-6">
+    Yo! Some skaters here might be wild or not suitable for everyone. We don’t condone anything inappropriate — but some things may exist anyway.
+    Skate safe and have fun!
+  </p>
+  <button onclick="acceptTerms()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl shadow-lg transition">
+    Okeeeeeeeee, I Accept
+  </button>
+</div>
 
-    <div id="tosContent" class="hidden bg-gray-900 mt-8 p-6 rounded-xl max-w-lg text-left shadow-lg">
-      <h3 class="text-2xl font-semibold mb-4 text-blue-400">Terms of Service</h3>
-      <ul class="list-disc pl-6 text-gray-300 space-y-2">
-        <li>Use at your own risk.</li>
-        <li>For educational purposes only.</li>
-        <li>No responsibility for misuse.</li>
-        <li>By proceeding, you agree to these terms.</li>
-      </ul>
-      <button onclick="acceptTerms()" class="mt-6 bg-green-600 hover:bg-green-700 px-6 py-3 rounded-xl text-white shadow-lg transition">Accept & Enter</button>
+<!-- Navbar -->
+<nav class="bg-gray-900/90 backdrop-blur p-4 sticky top-0 z-40 flex justify-between items-center">
+  <h1 class="text-3xl font-bold text-cyan-400">Galaxy Skater Hub</h1>
+  <a href="#contact" class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-xl transition">Contact</a>
+</nav>
+
+<!-- Hero -->
+<header class="text-center py-12 bg-gray-900/70">
+  <h2 class="text-5xl font-bold mb-4 text-cyan-400 drop-shadow-lg">Skate the Galaxy</h2>
+  <p class="text-gray-300 text-lg max-w-2xl mx-auto">Scroll through 500 cosmic skaters. Click to download your favorites and hit the streets!</p>
+</header>
+
+<!-- Skater Gallery -->
+<section class="py-16 px-6">
+  <h3 class="text-4xl font-bold text-cyan-400 mb-6 text-center">All Skaters</h3>
+  <div class="overflow-x-auto scrollbar-hide flex space-x-4 px-4">
+    <div id="skaterContainer" class="flex space-x-4"></div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="bg-gray-900/70 py-16 px-6 text-center">
+  <h3 class="text-3xl font-bold mb-6 text-cyan-400">About Galaxy Skater Hub</h3>
+  <p class="max-w-2xl mx-auto text-gray-300">
+    Galaxy Skater Hub is the ultimate collection of cosmic skaters for your games. Hundreds of characters, all free to use. Skate fast, look cosmic!
+  </p>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="container mx-auto px-6 py-16 text-center">
+  <h3 class="text-3xl font-bold mb-6 text-cyan-400">Contact</h3>
+  <p class="text-gray-300 mb-6">Questions, feedback, or cosmic suggestions? Hit me up!</p>
+  <a href="mailto:youremail@example.com" class="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-xl transition">Email Me</a>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900/80 text-center py-6 text-gray-400">
+  <p>&copy; 2025 Galaxy Skater Hub. All rights reserved.</p>
+</footer>
+
+<script>
+function acceptTerms() {
+  document.getElementById('tosOverlay').style.display = 'none';
+}
+
+// Generate 500 skater cards dynamically
+const container = document.getElementById('skaterContainer');
+for(let i=1; i<=500; i++){
+  const card = document.createElement('div');
+  card.className = 'skater-card bg-gray-800 rounded-2xl shadow-lg text-center p-4';
+  card.innerHTML = `
+    <div class="h-48 bg-gradient-to-br from-purple-900 via-pink-800 to-blue-900 flex items-center justify-center text-gray-400 mb-4">
+      Skater ${i}
     </div>
-  </div>
+    <h4 class="text-xl font-bold mb-2 text-yellow-400">Skater ${i}</h4>
+    <p class="text-gray-300 mb-4">Cosmic tricks!</p>
+    <a href="#" class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-xl transition inline-block">Download</a>
+  `;
+  container.appendChild(card);
+}
+</script>
 
-  <!-- Main Site -->
-  <div id="siteContent" class="hidden relative z-10">
-
-    <!-- Navbar -->
-    <nav class="bg-gray-900/80 backdrop-blur shadow-md p-4 sticky top-0 z-40 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-green-400 flex items-center space-x-2">
-        Nosucrew's Place
-        <a href="https://www.youtube.com/@Nosucrew" target="_blank" class="text-red-600 hover:text-red-700 transition">
-          👁️‍🗨️
-        </a>
-      </h1>
-      <div class="hidden md:flex space-x-6">
-        <a href="#games" class="hover:text-green-300 transition">Games</a>
-        <a href="#about" class="hover:text-green-300 transition">About</a>
-        <a href="#contact" class="hover:text-green-300 transition">Contact</a>
-      </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="text-center py-20 bg-gradient-to-b from-gray-800/70 to-transparent">
-      <h2 class="text-5xl font-bold mb-4 text-green-400 drop-shadow-lg">Welcome to Nosucrew's Place</h2>
-      <p class="text-lg text-gray-200">Explore mods, tools, and resources for games.</p>
-    </header>
-
-    <!-- Games Section -->
-    <section id="games" class="container mx-auto py-16 px-6">
-      <h3 class="text-3xl font-semibold text-center mb-10">Available Content</h3>
-      <div class="grid md:grid-cols-2 gap-6 justify-center">
-
-        <!-- PS3 Mods Box -->
-        <button onclick="openPS3Modal()" class="block bg-gray-900/70 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
-          <h4 class="text-xl font-bold text-green-400 mb-2">PS3 Mods</h4>
-          <p class="text-gray-300 mb-4">Click to view games</p>
-          <span class="text-lg">👀 Look 👀</span>
-        </button>
-
-        <!-- Tools Box -->
-        <button onclick="openToolsModal()" class="block bg-red-700/80 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
-          <h4 class="text-xl font-bold text-white mb-2">Tools</h4>
-          <p class="text-gray-200 mb-4">Click to view tools</p>
-          <span class="text-lg">👀 Look 👀</span>
-        </button>
-
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="bg-gray-900/70 py-16 px-6 text-center">
-      <h3 class="text-3xl font-semibold mb-6">About</h3>
-      <p class="max-w-2xl mx-auto text-gray-300">
-        Hey! I'm Nosucrew 👋 This is my place to share mods, tools, and resources for games. Everything here is free to use – enjoy exploring and playing with them!
-      </p>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="container mx-auto px-6 py-16 text-center">
-      <h3 class="text-3xl font-semibold mb-6">Contact Me</h3>
-      <p class="text-gray-300 mb-6">Got feedback or requests? Reach out!</p>
-      <a href="mailto:nosucrew.info@gmail.com" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl shadow-lg transition">Email Me</a>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900/80 text-center py-6 text-gray-400">
-      <p>&copy; 2025 Nosucrew's Place. All rights reserved.</p>
-    </footer>
-
-  </div>
-
-  <!-- PS3 Modal -->
-  <div id="ps3Modal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50">
-    <div class="bg-gray-900 rounded-2xl p-6 max-w-2xl w-full relative text-gray-100">
-      <button onclick="closePS3Modal()" class="absolute top-3 right-3 text-gray-300 hover:text-red-500 text-2xl font-bold">&times;</button>
-      <h3 class="text-2xl font-bold text-green-400 mb-6 text-center">PS3 Games</h3>
-      <div class="grid md:grid-cols-3 gap-4">
-        <div onclick="expandBox(this)" class="bg-gray-800 text-gray-100 p-4 rounded-xl text-center cursor-pointer hover:bg-gray-700 transition">Skate 3</div>
-        <div onclick="expandBox(this)" class="bg-gray-800 text-gray-100 p-4 rounded-xl text-center cursor-pointer hover:bg-gray-700 transition">Black Ops 2</div>
-        <div onclick="expandBox(this)" class="bg-gray-800 text-gray-100 p-4 rounded-xl text-center cursor-pointer hover:bg-gray-700 transition">Black Ops 1</div>
-        <div class="bg-gray-700 text-gray-400 p-4 rounded-xl text-center cursor-not-allowed">More Coming Soon...</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Tools Modal -->
-  <div id="toolsModal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50">
-    <div class="bg-red-800 rounded-2xl p-6 max-w-2xl w-full relative text-gray-100">
-      <button onclick="closeToolsModal()" class="absolute top-3 right-3 text-gray-100 hover:text-white text-2xl font-bold">&times;</button>
-      <h3 class="text-2xl font-bold text-white mb-6 text-center">Tools</h3>
-      <div class="grid md:grid-cols-3 gap-4">
-        <div onclick="expandBox(this)" class="bg-red-700 text-white p-4 rounded-xl text-center cursor-pointer hover:bg-red-600 transition">Tool 1</div>
-        <div onclick="expandBox(this)" class="bg-red-700 text-white p-4 rounded-xl text-center cursor-pointer hover:bg-red-600 transition">Tool 2</div>
-        <div onclick="expandBox(this)" class="bg-red-700 text-white p-4 rounded-xl text-center cursor-pointer hover:bg-red-600 transition">Tool 3</div>
-        <div class="bg-red-600 text-gray-200 p-4 rounded-xl text-center cursor-not-allowed">More Coming Soon
+</body>
+</html>
