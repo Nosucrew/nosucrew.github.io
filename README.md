@@ -1,65 +1,198 @@
-<!-- Games Section -->
-<section id="games" class="container mx-auto py-16 px-6">
-  <h3 class="text-3xl font-semibold text-center mb-10">Available Content</h3>
-  <div class="grid md:grid-cols-2 gap-6 justify-center">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosucrew's Place</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0b0c10;
+      overflow-x: hidden;
+      font-family: sans-serif;
+      color: #f0f0f0;
+      position: relative;
+    }
 
-    <!-- PS3 Mods Box -->
-    <button onclick="openPS3Modal()" class="block bg-gray-900/70 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
-      <h4 class="text-xl font-bold text-green-400 mb-2">PS3 Mods</h4>
-      <p class="text-gray-300 mb-4">Click to view games</p>
-      <span class="text-lg">👀 Look 👀</span>
-    </button>
+    /* Falling lightning */
+    .bolt {
+      position: absolute;
+      width: 2px;
+      height: 20px;
+      background: white;
+      opacity: 0.8;
+      top: -20px;
+      animation: fall linear forwards;
+    }
 
-    <!-- Tools Box -->
-    <button onclick="openToolsModal()" class="block bg-red-700/80 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
-      <h4 class="text-xl font-bold text-white mb-2">Tools</h4>
-      <p class="text-gray-200 mb-4">Click to view tools</p>
-      <span class="text-lg">👀 Look 👀</span>
-    </button>
+    @keyframes fall {
+      to {
+        top: 100%;
+        transform: scaleY(0.1);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
 
-  </div>
-</section>
+  <!-- Terms of Service Overlay -->
+  <div id="tosOverlay" class="fixed inset-0 bg-black/90 flex flex-col items-center justify-center z-50">
+    <h2 class="text-4xl font-bold mb-6 text-green-400 drop-shadow-lg">Welcome to Nosucrew's Place</h2>
+    <button onclick="showTerms()" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl text-white shadow-lg transition">View Terms of Service</button>
 
-<!-- PS3 Modal -->
-<div id="ps3Modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
-  <div class="bg-gray-900 rounded-2xl p-8 max-w-lg w-full relative">
-    <button onclick="closePS3Modal()" class="absolute top-3 right-3 text-gray-300 hover:text-red-500 text-2xl font-bold">&times;</button>
-    <h3 class="text-2xl font-bold text-green-400 mb-6">PS3 Games</h3>
-    <div class="grid gap-4">
-      <div class="bg-gray-800 p-4 rounded-xl text-center hover:bg-gray-700 transition cursor-pointer">Skate 3</div>
-      <div class="bg-gray-800 p-4 rounded-xl text-center hover:bg-gray-700 transition cursor-pointer">Black Ops 2</div>
-      <div class="bg-gray-800 p-4 rounded-xl text-center hover:bg-gray-700 transition cursor-pointer">Black Ops 1</div>
-      <div class="bg-gray-700 p-4 rounded-xl text-center text-gray-400 cursor-not-allowed">More Coming Soon...</div>
+    <div id="tosContent" class="hidden bg-gray-900 mt-8 p-6 rounded-xl max-w-lg text-left shadow-lg">
+      <h3 class="text-2xl font-semibold mb-4 text-blue-400">Terms of Service</h3>
+      <ul class="list-disc pl-6 text-gray-300 space-y-2">
+        <li>Use at your own risk.</li>
+        <li>For educational purposes only.</li>
+        <li>No responsibility for misuse.</li>
+        <li>By proceeding, you agree to these terms.</li>
+      </ul>
+      <button onclick="acceptTerms()" class="mt-6 bg-green-600 hover:bg-green-700 px-6 py-3 rounded-xl text-white shadow-lg transition">Accept & Enter</button>
     </div>
   </div>
-</div>
 
-<!-- Tools Modal -->
-<div id="toolsModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
-  <div class="bg-red-800 rounded-2xl p-8 max-w-lg w-full relative">
-    <button onclick="closeToolsModal()" class="absolute top-3 right-3 text-gray-100 hover:text-white text-2xl font-bold">&times;</button>
-    <h3 class="text-2xl font-bold text-white mb-6">Tools</h3>
-    <div class="grid gap-4">
-      <div class="bg-red-700 p-4 rounded-xl text-center hover:bg-red-600 transition cursor-pointer">Tool 1</div>
-      <div class="bg-red-700 p-4 rounded-xl text-center hover:bg-red-600 transition cursor-pointer">Tool 2</div>
-      <div class="bg-red-700 p-4 rounded-xl text-center hover:bg-red-600 transition cursor-pointer">Tool 3</div>
-      <div class="bg-red-600 p-4 rounded-xl text-center text-gray-200 cursor-not-allowed">More Coming Soon...</div>
+  <!-- Main Site -->
+  <div id="siteContent" class="hidden relative z-10">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-900/80 backdrop-blur shadow-md p-4 sticky top-0 z-40 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-green-400 flex items-center space-x-2">
+        Nosucrew's Place
+        <a href="https://www.youtube.com/@Nosucrew" target="_blank" class="text-red-600 hover:text-red-700 transition">
+          👁️‍🗨️
+        </a>
+      </h1>
+      <div class="hidden md:flex space-x-6">
+        <a href="#games" class="hover:text-green-300 transition">Games</a>
+        <a href="#about" class="hover:text-green-300 transition">About</a>
+        <a href="#contact" class="hover:text-green-300 transition">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="text-center py-20 bg-gradient-to-b from-gray-800/70 to-transparent">
+      <h2 class="text-5xl font-bold mb-4 text-green-400 drop-shadow-lg">Welcome to Nosucrew's Place</h2>
+      <p class="text-lg text-gray-200">Explore mods, tools, and resources for games.</p>
+    </header>
+
+    <!-- Games Section -->
+    <section id="games" class="container mx-auto py-16 px-6">
+      <h3 class="text-3xl font-semibold text-center mb-10">Available Content</h3>
+      <div class="grid md:grid-cols-2 gap-6 justify-center">
+
+        <!-- PS3 Mods Box -->
+        <button onclick="openPS3Modal()" class="block bg-gray-900/70 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
+          <h4 class="text-xl font-bold text-green-400 mb-2">PS3 Mods</h4>
+          <p class="text-gray-300 mb-4">Click to view games</p>
+          <span class="text-lg">👀 Look 👀</span>
+        </button>
+
+        <!-- Tools Box -->
+        <button onclick="openToolsModal()" class="block bg-red-700/80 rounded-2xl p-6 text-center shadow-lg hover:scale-105 transition">
+          <h4 class="text-xl font-bold text-white mb-2">Tools</h4>
+          <p class="text-gray-200 mb-4">Click to view tools</p>
+          <span class="text-lg">👀 Look 👀</span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-gray-900/70 py-16 px-6 text-center">
+      <h3 class="text-3xl font-semibold mb-6">About</h3>
+      <p class="max-w-2xl mx-auto text-gray-300">
+        Hey! I'm Nosucrew 👋 This is my place to share mods, tools, and resources for games. Everything here is free to use – enjoy exploring and playing with them!
+      </p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container mx-auto px-6 py-16 text-center">
+      <h3 class="text-3xl font-semibold mb-6">Contact Me</h3>
+      <p class="text-gray-300 mb-6">Got feedback or requests? Reach out!</p>
+      <a href="mailto:nosucrew.info@gmail.com" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl shadow-lg transition">Email Me</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/80 text-center py-6 text-gray-400">
+      <p>&copy; 2025 Nosucrew's Place. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <!-- PS3 Modal -->
+  <div id="ps3Modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+    <div class="bg-gray-900 rounded-2xl p-6 max-w-2xl w-full relative">
+      <button onclick="closePS3Modal()" class="absolute top-3 right-3 text-gray-300 hover:text-red-500 text-2xl font-bold">&times;</button>
+      <h3 class="text-2xl font-bold text-green-400 mb-6 text-center">PS3 Games</h3>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div onclick="expandBox(this)" class="bg-gray-800 p-4 rounded-xl text-center cursor-pointer hover:bg-gray-700 transition">Skate 3</div>
+        <div onclick="expandBox(this)" class="bg-gray-800 p-4 rounded-xl text-center cursor-pointer hover:bg-gray-700 transition">Black Ops 2</div>
+        <div onclick="expandBox(this)" class="bg-gray-800 p-4 rounded-xl text-center cursor-pointer hover:bg-gray-700 transition">Black Ops 1</div>
+        <div class="bg-gray-700 p-4 rounded-xl text-center text-gray-400 cursor-not-allowed">More Coming Soon...</div>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-  function openPS3Modal() {
-    document.getElementById('ps3Modal').classList.remove('hidden');
-  }
-  function closePS3Modal() {
-    document.getElementById('ps3Modal').classList.add('hidden');
-  }
+  <!-- Tools Modal -->
+  <div id="toolsModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+    <div class="bg-red-800 rounded-2xl p-6 max-w-2xl w-full relative">
+      <button onclick="closeToolsModal()" class="absolute top-3 right-3 text-gray-100 hover:text-white text-2xl font-bold">&times;</button>
+      <h3 class="text-2xl font-bold text-white mb-6 text-center">Tools</h3>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div onclick="expandBox(this)" class="bg-red-700 p-4 rounded-xl text-center cursor-pointer hover:bg-red-600 transition">Tool 1</div>
+        <div onclick="expandBox(this)" class="bg-red-700 p-4 rounded-xl text-center cursor-pointer hover:bg-red-600 transition">Tool 2</div>
+        <div onclick="expandBox(this)" class="bg-red-700 p-4 rounded-xl text-center cursor-pointer hover:bg-red-600 transition">Tool 3</div>
+        <div class="bg-red-600 p-4 rounded-xl text-center text-gray-200 cursor-not-allowed">More Coming Soon...</div>
+      </div>
+    </div>
+  </div>
 
-  function openToolsModal() {
-    document.getElementById('toolsModal').classList.remove('hidden');
-  }
-  function closeToolsModal() {
-    document.getElementById('toolsModal').classList.add('hidden');
-  }
-</script>
+  <!-- Scripts -->
+  <script>
+    // Lightning bolts
+    function spawnBolt() {
+      const bolt = document.createElement('div');
+      bolt.classList.add('bolt');
+      bolt.style.left = Math.random() * window.innerWidth + 'px';
+      bolt.style.height = 20 + Math.random() * 30 + 'px';
+      bolt.style.animationDuration = (1 + Math.random()*1.5) + 's';
+      document.body.appendChild(bolt);
+      bolt.addEventListener('animationend', () => bolt.remove());
+    }
+    setInterval(spawnBolt, 300);
+
+    // TOS
+    function showTerms() {
+      document.getElementById('tosContent').classList.remove('hidden');
+    }
+    function acceptTerms() {
+      document.getElementById('tosOverlay').classList.add('hidden');
+      document.getElementById('siteContent').classList.remove('hidden');
+    }
+
+    // PS3 Modal
+    function openPS3Modal() { document.getElementById('ps3Modal').classList.remove('hidden'); }
+    function closePS3Modal() { document.getElementById('ps3Modal').classList.add('hidden'); }
+
+    // Tools Modal
+    function openToolsModal() { document.getElementById('toolsModal').classList.remove('hidden'); }
+    function closeToolsModal() { document.getElementById('toolsModal').classList.add('hidden'); }
+
+    // Expand box effect
+    function expandBox(el) {
+      el.style.transition = 'all 0.4s ease';
+      el.style.transform = 'scale(1.2)';
+      el.style.zIndex = '100';
+      setTimeout(() => {
+        el.style.transform = 'scale(1)';
+        el.style.zIndex = '1';
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
