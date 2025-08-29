@@ -32,7 +32,7 @@
     <div class="grid md:grid-cols-3 gap-8">
       <!-- Example mod card -->
       <div class="bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition">
-        <img src="https://via.placeholder.com/400x200" alt="Mod Screenshot" class="w-full h-48 object-cover">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Video-Game-Controller-Icon.png/512px-Video-Game-Controller-Icon.png" alt="Mod Screenshot" class="w-full h-48 object-contain bg-gray-900">
         <div class="p-4">
           <h4 class="text-xl font-bold mb-2">Cool Mod #1</h4>
           <p class="text-gray-400 text-sm mb-4">This mod adds awesome new features and improves gameplay.</p>
@@ -42,7 +42,7 @@
 
       <!-- Duplicate and edit this block for more mods -->
       <div class="bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition">
-        <img src="https://via.placeholder.com/400x200" alt="Mod Screenshot" class="w-full h-48 object-cover">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Gamepad_icon.svg/512px-Gamepad_icon.svg.png" alt="Mod Screenshot" class="w-full h-48 object-contain bg-gray-900">
         <div class="p-4">
           <h4 class="text-xl font-bold mb-2">Cool Mod #2</h4>
           <p class="text-gray-400 text-sm mb-4">Another mod description goes here.</p>
@@ -71,4 +71,3 @@
   </footer>
 </body>
 </html>
-
