@@ -8,7 +8,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: url('https://images.unsplash.com/photo-1613473743286-3d60f590e5f3?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+  background: url('https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/ChatGPT%20Image%2029%20aug%202025,%2013_23_10.png') no-repeat center center fixed;
   background-size: cover;
   color: white;
   position: relative;
