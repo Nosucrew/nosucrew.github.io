@@ -14,7 +14,6 @@ body {
   position: relative;
 }
 
-/* Optional overlay to make text readable but keep background visible */
 body::after {
   content: '';
   position: fixed;
@@ -22,7 +21,7 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.3); /* reduced opacity so background shows */
+  background: rgba(0,0,0,0.3);
   z-index: -1;
 }
 
@@ -85,7 +84,7 @@ body::after {
   justify-content: space-between;
   padding: 5px;
   cursor: pointer;
-  background: rgba(30,60,114,0.3); /* semi-transparent so background shows through */
+  background: rgba(30,60,114,0.3);
 }
 
 .box img {
@@ -102,6 +101,11 @@ body::after {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  display: block;
+  margin-top: 5px;
   text-align: center;
 }
 
@@ -151,20 +155,32 @@ proceedBtn.addEventListener('click', () => {
   overlay.style.display = 'none';
 });
 
-// Images
-const firstImages = [
-  'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Epic%20Swag.jpg',
-  'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Girls%20Love%20Me.png',
-  'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/IMG-4297.jpg',
-  'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Metallica.png',
-  'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/rainbowlikeaboss.png'
+// Map 5 images to their ZIP files
+const items = [
+  {
+    img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Epic%20Swag.jpg',
+    zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/EpicSwag.zip'
+  },
+  {
+    img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Girls%20Love%20Me.png',
+    zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/GirlsLoveMe.zip'
+  },
+  {
+    img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/IMG-4297.jpg',
+    zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/ARIKA.zip'
+  },
+  {
+    img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Metallica.png',
+    zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Metallica%20(1).zip'
+  },
+  {
+    img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/rainbowlikeaboss.png',
+    zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/RainbowLikeABoss%20(2).zip'
+  }
 ];
 
-const stockImage = 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/soon.jpg';
-const totalBoxes = 500;
-
-// Create boxes
-for(let i=0; i<totalBoxes; i++){
+// Create boxes for all items
+items.forEach(item => {
   const box = document.createElement('div');
   box.className = 'box';
 
@@ -173,18 +189,19 @@ for(let i=0; i<totalBoxes; i++){
   box.appendChild(stars);
 
   const img = document.createElement('img');
-  img.src = i < 5 ? firstImages[i] : stockImage;
-  img.alt = `Skater ${i+1}`;
+  img.src = item.img;
+  img.alt = 'Skater Image';
   box.appendChild(img);
 
-  const btn = document.createElement('button');
+  const btn = document.createElement('a');
   btn.className = 'download-btn';
-  btn.innerText = 'Download';
-  btn.onclick = () => alert(`Downloading Skater ${i+1} file...`);
+  btn.href = item.zip;
+  btn.download = '';
+  btn.innerText = 'Download ZIP';
   box.appendChild(btn);
 
   grid.appendChild(box);
-}
+});
 </script>
 
 </body>
