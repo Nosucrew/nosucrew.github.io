@@ -85,8 +85,7 @@ body::after {
   justify-content: space-between;
   padding: 5px;
   cursor: pointer;
-  background: rgba(30,60,114,0.3); /* semi-transparent background so main background shows */
-  animation: galaxy 12s infinite alternate ease-in-out;
+  background: rgba(30,60,114,0.3); /* semi-transparent so background shows through */
 }
 
 .box img {
@@ -104,15 +103,6 @@ body::after {
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
-}
-
-/* Galaxy animation for box background overlay */
-@keyframes galaxy {
-  0% { background: rgba(30,60,114,0.3); }
-  25% { background: rgba(0,255,204,0.2); }
-  50% { background: rgba(255,0,255,0.2); }
-  75% { background: rgba(0,255,255,0.2); }
-  100% { background: rgba(30,60,114,0.3); }
 }
 
 /* Stars overlay */
