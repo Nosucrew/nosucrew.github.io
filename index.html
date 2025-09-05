@@ -23,9 +23,7 @@ body::after {
   background: rgba(0,0,0,0.3);
   z-index: -1;
 }
-h1 {
-  text-align: center;
-}
+h1 { text-align: center; }
 .top-buttons {
   display: flex;
   justify-content: center;
@@ -39,21 +37,13 @@ button {
   border: none;
   border-radius: 8px;
 }
-.credit-btn {
-  background-color: green;
-  color: white;
-}
-.skater-btn {
-  background-color: #1e90ff;
-  color: white;
-}
+.credit-btn { background-color: green; color: white; }
+.skater-btn { background-color: #1e90ff; color: white; }
 .popup {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
@@ -67,9 +57,7 @@ button {
   max-width: 400px;
   color: white;
 }
-.popup-content h2 {
-  margin-top: 0;
-}
+.popup-content h2 { margin-top: 0; }
 .popup-content a {
   display: block;
   margin: 10px 0;
@@ -168,7 +156,6 @@ button {
 </head>
 <body>
 
-<!-- Consent Overlay -->
 <div id="consentOverlay">
   <div id="consentOverlayContent">
     <h2>Disclaimer & Terms</h2>
@@ -189,7 +176,6 @@ button {
   <button class="skater-btn" onclick="sendSkaterPS3()">Send Skater PS3</button>
 </div>
 
-<!-- Credit Popup -->
 <div class="popup" id="creditPopup">
   <div class="popup-content">
     <h2>Credits</h2>
@@ -200,7 +186,6 @@ button {
   </div>
 </div>
 
-<!-- Skater Popup -->
 <div class="popup" id="skaterPopup">
   <div class="popup-content">
     <h2>Give Skater</h2>
@@ -224,18 +209,10 @@ const grid = document.getElementById('grid');
 checkbox.addEventListener('change', () => {
   proceedBtn.disabled = !checkbox.checked;
 });
+proceedBtn.addEventListener('click', () => { overlay.style.display = 'none'; });
 
-proceedBtn.addEventListener('click', () => {
-  overlay.style.display = 'none';
-});
-
-// POPUP FUNCTIONS
-function openPopup(id){
-  document.getElementById(id).style.display = 'flex';
-}
-function closePopup(id){
-  document.getElementById(id).style.display = 'none';
-}
+function openPopup(id){ document.getElementById(id).style.display = 'flex'; }
+function closePopup(id){ document.getElementById(id).style.display = 'none'; }
 function copyEmail(){
   const email = document.getElementById('emailBox').innerText;
   navigator.clipboard.writeText(email);
@@ -249,51 +226,27 @@ function sendSkaterPS3(){
   window.open("https://mail.google.com/mail/u/0/#inbox?compose=new&to=nosucrew.info@gmail.com", "_blank");
 }
 
-// SKATER IMAGES AND GRID
 const specialItems = [
-  {img: 'https://raw.githubusercontent.com/Nosucrew/Nosucrew.github.io/main/epic_swag.jpg', zip: 'https://raw.githubusercontent.com/Nosucrew/Nosucrew.github.io/main/epic_swag_skin.rar'},
-  {img: 'https://raw.githubusercontent.com/Nosucrew/Nosucrew.github.io/main/girls_love_me.png', zip: 'https://raw.githubusercontent.com/Nosucrew/Nosucrew.github.io/main/girls_love_me_skin.rar'},
-  {img: 'https://raw.githubusercontent.com/Nosucrew/Nosucrew.github.io/main/arika.jpg', zip: 'https://raw.githubusercontent.com/Nosucrew/Nosucrew.github.io/main/arika.zip'},
-  {img: 'https://raw.githubusercontent.com/Nosucrew/Nosucrew.github.io/main/metallica.png', zip: 'https://raw.githubusercontent.com/Nosucrew/Nosucrew.github.io/main/metallica.zip'},
-  {img: 'https://raw.githubusercontent.com/Nosucrew/Nosucrew.github.io/main/rainbowlikeaboss.png', zip: 'https://raw.githubusercontent.com/Nosucrew/Nosucrew.github.io/main/rainbowlikeaboss.zip'}
+  {img:'https://nosucrew.github.io/Epic%20Swag.jpg', zip:'https://nosucrew.github.io/Epic-Swag-Red-Glow-White-Skin.rar'},
+  {img:'https://nosucrew.github.io/Girls%20Love%20Me.png', zip:'https://nosucrew.github.io/Girls-Love-Me-Green-Glow-Black-Skin.rar'},
+  {img:'https://nosucrew.github.io/arika.jpg', zip:'https://nosucrew.github.io/arika.zip'},
+  {img:'https://nosucrew.github.io/metallica.png', zip:'https://nosucrew.github.io/Metallica%20(1).zip'},
+  {img:'https://nosucrew.github.io/rainbowlikeaboss.png', zip:'https://nosucrew.github.io/RainbowLikeABoss%20(2).zip'}
 ];
+const stockImage='https://nosucrew.github.io/soon.jpg';
+const totalBoxes=500;
 
-const stockImage = 'https://raw.githubusercontent.com/Nosucrew/Nosucrew.github.io/main/soon.jpg';
-const totalBoxes = 500;
-
-for(let i=0; i<totalBoxes; i++){
-  const box = document.createElement('div');
-  box.className = 'box';
-
-  const stars = document.createElement('div');
-  stars.className = 'stars';
-  box.appendChild(stars);
-
-  const img = document.createElement('img');
-  let zip = null;
-
-  if(i < specialItems.length){
-    img.src = specialItems[i].img;
-    zip = specialItems[i].zip;
-    img.alt = `Skater ${i+1}`;
-  } else {
-    img.src = stockImage;
-    img.alt = `Skater ${i+1}`;
-  }
-
+for(let i=0;i<totalBoxes;i++){
+  const box=document.createElement('div'); box.className='box';
+  const stars=document.createElement('div'); stars.className='stars'; box.appendChild(stars);
+  const img=document.createElement('img'); let zip=null;
+  if(i<specialItems.length){ img.src=specialItems[i].img; zip=specialItems[i].zip; img.alt=`Skater ${i+1}`; }
+  else{ img.src=stockImage; img.alt=`Skater ${i+1}`; }
   box.appendChild(img);
-
-  const btn = document.createElement('a');
-  btn.className = 'download-btn';
-  if(zip){
-    btn.href = zip;
-    btn.download = '';
-    btn.innerText = 'Download';
-  } else {
-    btn.style.display = 'none';
-  }
+  const btn=document.createElement('a'); btn.className='download-btn';
+  if(zip){ btn.href=zip; btn.download=''; btn.innerText='Download'; }
+  else{ btn.style.display='none'; }
   box.appendChild(btn);
-
   grid.appendChild(box);
 }
 </script>
