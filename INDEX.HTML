@@ -23,36 +23,79 @@ body::after {
   background: rgba(0,0,0,0.3);
   z-index: -1;
 }
-#consentOverlay {
+h1 {
+  text-align: center;
+}
+.top-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px;
+}
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+}
+.credit-btn {
+  background-color: green;
+  color: white;
+}
+.skater-btn {
+  background-color: #1e90ff;
+  color: white;
+}
+.popup {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.95);
-  display: flex;
+  background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 10000;
 }
-#consentOverlayContent {
+.popup-content {
+  background: #222;
+  padding: 20px;
+  border-radius: 12px;
   text-align: center;
   max-width: 400px;
-  width: 100%;
+  color: white;
 }
-#consentOverlayContent label {
+.popup-content h2 {
+  margin-top: 0;
+}
+.popup-content a {
   display: block;
-  margin: 15px 0;
-  font-size: 16px;
-  cursor: pointer;
+  margin: 10px 0;
+  color: #1e90ff;
+  text-decoration: none;
 }
-#consentOverlayContent button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  background-color: #1e3c72;
+.popup-content .email-box {
+  font-size: 18px;
+  margin: 15px 0;
+  background: #333;
+  padding: 10px;
+  border-radius: 6px;
+  word-wrap: break-word;
+}
+.popup-content .popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.popup-content button {
+  flex: 1;
+  margin: 0 5px;
+}
+.close-btn {
+  margin-top: 15px;
+  background: red;
   color: white;
 }
 .grid {
@@ -120,7 +163,37 @@ body::after {
   </div>
 </div>
 
-<h1 style="text-align:center;">Skater Files Download</h1>
+<h1>Skater Files Download</h1>
+
+<div class="top-buttons">
+  <button class="credit-btn" onclick="openPopup('creditPopup')">Credits</button>
+  <button class="skater-btn" onclick="openPopup('skaterPopup')">Give Skater</button>
+</div>
+
+<!-- Credit Popup -->
+<div class="popup" id="creditPopup">
+  <div class="popup-content">
+    <h2>Credits</h2>
+    <p>Special thanks to:</p>
+    <a href="https://www.youtube.com/c/emarbyhd/videos" target="_blank">emarbyHD</a>
+    <a href="https://www.youtube.com/channel/UCpwaJEkNWoO-wFvmaQttUKQ" target="_blank">tydubaygamez</a>
+    <button class="close-btn" onclick="closePopup('creditPopup')">Close</button>
+  </div>
+</div>
+
+<!-- Skater Popup -->
+<div class="popup" id="skaterPopup">
+  <div class="popup-content">
+    <h2>Give Skater</h2>
+    <div class="email-box" id="emailBox">nosucrew.info@gmail.com</div>
+    <div class="popup-buttons">
+      <button onclick="copyEmail()">Copy</button>
+      <button onclick="sendEmail()">Send Email</button>
+    </div>
+    <button class="close-btn" onclick="closePopup('skaterPopup')">Close</button>
+  </div>
+</div>
+
 <div class="grid" id="grid"></div>
 
 <script>
@@ -137,7 +210,23 @@ proceedBtn.addEventListener('click', () => {
   overlay.style.display = 'none';
 });
 
-// First 5 images and their raw download links
+// POPUP FUNCTIONS
+function openPopup(id){
+  document.getElementById(id).style.display = 'flex';
+}
+function closePopup(id){
+  document.getElementById(id).style.display = 'none';
+}
+function copyEmail(){
+  const email = document.getElementById('emailBox').innerText;
+  navigator.clipboard.writeText(email);
+  alert("Email copied: " + email);
+}
+function sendEmail(){
+  window.open("https://mail.google.com/mail/u/0/#inbox?compose=new", "_blank");
+}
+
+// IMAGES
 const specialItems = [
   {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Epic%20Swag.jpg', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Epic-Swag-Red-Glow-White-Skin.rar'},
   {img: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Girls%20Love%20Me.png', zip: 'https://raw.githubusercontent.com/Nosucrew/nosucrew.github.io/main/Girls-Love-Me-Green-Glow-Black-Skin.rar'},
