@@ -4,68 +4,74 @@
 <meta charset="UTF-8">
 <title>Skater Downloads</title>
 <style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0; padding: 0;
-  background: url('https://raw.githubusercontent.com/Nosucrew/Nosucrew.github.io/main/chatgpt_bg.png') no-repeat center center fixed;
-  background-size: cover; color: white; position: relative;
-}
-body::after {
-  content: '';
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.3); z-index: -1;
-}
-h1 { text-align: center; }
-.top-buttons { display: flex; justify-content: center; gap: 20px; margin: 20px; }
-button {
-  padding: 12px 24px; font-size: 16px; cursor: pointer; border: none; border-radius: 8px;
-}
-.credit-btn { background-color: green; color: white; }
-.skater-btn { background-color: #1e90ff; color: white; }
-.popup {
-  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 10000;
-}
-.popup-content {
-  background: #222; padding: 20px; border-radius: 12px; text-align: center; max-width: 400px; color: white;
-}
-.popup-content h2 { margin-top: 0; }
-.popup-content a { display: block; margin: 10px 0; color: #1e90ff; text-decoration: none; }
-.popup-content .email-box { font-size: 18px; margin: 15px 0; background: #333; padding: 10px; border-radius: 6px; word-wrap: break-word; }
-.popup-content .popup-buttons { display: flex; justify-content: space-between; margin-top: 15px; }
-.popup-content button { flex: 1; margin: 0 5px; }
-.close-btn { margin-top: 15px; background: red; color: white; }
-.grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px; padding: 20px; justify-items: center; margin-top: 20px;
-}
-.box {
-  position: relative; width: 200px; height: 240px; border-radius: 10px;
-  overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
-  padding: 5px; cursor: pointer; background: rgba(30,60,114,0.3);
-}
-.box img { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; }
-.download-btn {
-  padding: 6px; font-size: 13px; background-color: rgba(255,255,255,0.8);
-  border: none; border-radius: 5px; cursor: pointer; text-align: center; text-decoration: none;
-  color: black; display: block; margin-top: 5px;
-}
-.stars {
-  position: absolute; width: 100%; height: 100%; pointer-events: none;
-  background-image: radial-gradient(white 1px, transparent 1px); background-size: 5px 5px;
-  opacity: 0.3;
-}
-#consentOverlay {
-  position: fixed; top:0; left:0; width:100%; height:100%;
-  background: rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index: 9999;
-}
-#consentOverlayContent {
-  background: #222; padding: 20px; border-radius: 12px; text-align: center; max-width: 400px;
-}
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0; padding: 0;
+    background: url('https://raw.githubusercontent.com/Nosucrew/Nosucrew.github.io/main/chatgpt_bg.png') no-repeat center center fixed;
+    background-size: cover; color: white; position: relative;
+  }
+  body::after {
+    content: '';
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.3); z-index: -1;
+  }
+  h1 { text-align: center; margin-top: 20px; }
+  .top-buttons {
+    display: flex; justify-content: center; gap: 20px; margin: 20px;
+  }
+  button {
+    padding: 12px 24px; font-size: 16px; cursor: pointer;
+    border: none; border-radius: 8px;
+  }
+  .credit-btn { background-color: green; color: white; }
+  .skater-btn { background-color: #1e90ff; color: white; }
+  .popup {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 10000;
+  }
+  .popup-content {
+    background: #222; padding: 20px; border-radius: 12px; text-align: center; max-width: 400px; color: white;
+  }
+  .popup-content h2 { margin-top: 0; }
+  .popup-content a { display: block; margin: 10px 0; color: #1e90ff; text-decoration: none; }
+  .popup-content .email-box {
+    font-size: 18px; margin: 15px 0; background: #333; padding: 10px; border-radius: 6px; word-wrap: break-word;
+  }
+  .popup-content .popup-buttons { display: flex; justify-content: space-between; margin-top: 15px; }
+  .popup-content button { flex: 1; margin: 0 5px; }
+  .close-btn { margin-top: 15px; background: red; color: white; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px; padding: 20px; justify-items: center; margin-top: 20px;
+  }
+  .box {
+    position: relative; width: 200px; height: 240px; border-radius: 10px;
+    overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
+    padding: 5px; cursor: pointer; background: rgba(30,60,114,0.3);
+  }
+  .box img { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; }
+  .download-btn {
+    padding: 6px; font-size: 13px; background-color: rgba(255,255,255,0.8);
+    border: none; border-radius: 5px; cursor: pointer; text-align: center; text-decoration: none;
+    color: black; display: block; margin-top: 5px;
+  }
+  .stars {
+    position: absolute; width: 100%; height: 100%; pointer-events: none;
+    background-image: radial-gradient(white 1px, transparent 1px); background-size: 5px 5px;
+    opacity: 0.3;
+  }
+  #consentOverlay {
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index: 9999;
+  }
+  #consentOverlayContent {
+    background: #222; padding: 20px; border-radius: 12px; text-align: center; max-width: 400px;
+  }
 </style>
 </head>
 <body>
 
+<!-- Consent Overlay -->
 <div id="consentOverlay">
   <div id="consentOverlayContent">
     <h2>Disclaimer & Terms</h2>
@@ -79,12 +85,14 @@ button {
 
 <h1>Skater Files Download</h1>
 
+<!-- Top Buttons -->
 <div class="top-buttons">
   <button class="credit-btn" onclick="openPopup('creditPopup')">Credits</button>
   <button class="skater-btn" onclick="openPopup('skaterPopup')">Give Skater</button>
   <button class="skater-btn" onclick="sendSkaterPS3()">Send Skater PS3</button>
 </div>
 
+<!-- Popups -->
 <div class="popup" id="creditPopup">
   <div class="popup-content">
     <h2>Credits</h2>
@@ -107,50 +115,64 @@ button {
   </div>
 </div>
 
+<!-- Grid -->
 <div class="grid" id="grid"></div>
 
 <script>
-const checkbox = document.getElementById('consentCheckbox');
-const proceedBtn = document.getElementById('proceedBtn');
-const overlay = document.getElementById('consentOverlay');
-const grid = document.getElementById('grid');
+  // Consent logic
+  const checkbox = document.getElementById('consentCheckbox');
+  const proceedBtn = document.getElementById('proceedBtn');
+  const overlay = document.getElementById('consentOverlay');
+  const grid = document.getElementById('grid');
 
-checkbox.addEventListener('change', () => { proceedBtn.disabled = !checkbox.checked; });
-proceedBtn.addEventListener('click', () => { overlay.style.display = 'none'; });
+  checkbox.addEventListener('change', () => { proceedBtn.disabled = !checkbox.checked; });
+  proceedBtn.addEventListener('click', () => { overlay.style.display = 'none'; });
 
-function openPopup(id){ document.getElementById(id).style.display = 'flex'; }
-function closePopup(id){ document.getElementById(id).style.display = 'none'; }
-function copyEmail(){ navigator.clipboard.writeText("nosucrew.info@gmail.com"); alert("Email copied"); }
-function sendEmail(){ window.open("https://mail.google.com/mail/u/0/#inbox?compose=new&to=nosucrew.info@gmail.com", "_blank"); }
-function sendSkaterPS3(){
-  alert("Recommended that you send the skater zip with bless00760 and Blus30464");
-  window.open("https://mail.google.com/mail/u/0/#inbox?compose=new&to=nosucrew.info@gmail.com", "_blank");
-}
+  // Popup functions
+  function openPopup(id){ document.getElementById(id).style.display = 'flex'; }
+  function closePopup(id){ document.getElementById(id).style.display = 'none'; }
 
-const specialItems = [
-  {img:'https://nosucrew.github.io/Epic%20Swag.jpg', zip:'https://nosucrew.github.io/Epic-Swag-Red-Glow-White-Skin.rar'},
-  {img:'https://nosucrew.github.io/Girls%20Love%20Me.png', zip:'https://nosucrew.github.io/Girls-Love-Me-Green-Glow-Black-Skin.rar'},
-  {img:'https://nosucrew.github.io/arika.jpg', zip:'https://nosucrew.github.io/arika.zip'},
-  {img:'https://nosucrew.github.io/Metallica%20%281%29.png', zip:'https://nosucrew.github.io/Metallica%20%281%29.zip'},
-  {img:'https://nosucrew.github.io/RainbowLikeABoss%20%282%29.png', zip:'https://nosucrew.github.io/RainbowLikeABoss%20%282%29.zip'}
-];
+  // Email functions
+  function copyEmail(){ navigator.clipboard.writeText("nosucrew.info@gmail.com"); alert("Email copied"); }
+  function sendEmail(){ window.open("https://mail.google.com/mail/u/0/#inbox?compose=new&to=nosucrew.info@gmail.com", "_blank"); }
 
-const stockImage='https://nosucrew.github.io/soon.jpg';
-const totalBoxes=500;
+  // Send Skater PS3
+  function sendSkaterPS3(){
+    alert("Recommended that you send the skater zip with bless00760 and Bluss30464");
+    window.open("https://mail.google.com/mail/u/0/#inbox?compose=new&to=nosucrew.info@gmail.com", "_blank");
+  }
 
-for(let i=0;i<totalBoxes;i++){
-  const box=document.createElement('div'); box.className='box';
-  const stars=document.createElement('div'); stars.className='stars'; box.appendChild(stars);
-  const img=document.createElement('img'); let zip=null;
-  if(i<specialItems.length){ img.src=specialItems[i].img; zip=specialItems[i].zip; img.alt=`Skater ${i+1}`; }
-  else{ img.src=stockImage; img.alt=`Skater ${i+1}`; }
-  box.appendChild(img);
-  const btn=document.createElement('a'); btn.className='download-btn';
-  if(zip){ btn.href=zip; btn.download=''; btn.innerText='Download'; }
-  else{ btn.style.display='none'; }
-  box.appendChild(btn);
-  grid.appendChild(box);
-}
+  // Special items
+  const specialItems = [
+    {img:'https://nosucrew.github.io/Epic%20Swag.jpg', zip:'https://nosucrew.github.io/Epic-Swag-Red-Glow-White-Skin.rar'},
+    {img:'https://nosucrew.github.io/Girls%20Love%20Me.png', zip:'https://nosucrew.github.io/Girls-Love-Me-Green-Glow-Black-Skin.rar'},
+    {img:'https://nosucrew.github.io/arika.jpg', zip:'https://nosucrew.github.io/arika.zip'},
+    {img:'https://nosucrew.github.io/Metallica%20%281%29.png', zip:'https://nosucrew.github.io/Metallica%20%281%29.zip'},
+    {img:'https://nosucrew.github.io/RainbowLikeABoss%20%282%29.png', zip:'https://nosucrew.github.io/RainbowLikeABoss%20%282%29.zip'}
+  ];
+
+  const stockImage='https://nosucrew.github.io/soon.jpg';
+  const totalBoxes=500;
+
+  for(let i=0;i<totalBoxes;i++){
+    const box=document.createElement('div'); box.className='box';
+    const stars=document.createElement('div'); stars.className='stars'; box.appendChild(stars);
+
+    const img=document.createElement('img'); let zip=null;
+    if(i<specialItems.length){
+      img.src=specialItems[i].img; zip=specialItems[i].zip; img.alt=`Skater ${i+1}`;
+    } else { 
+      img.src=stockImage; img.alt=`Skater ${i+1}`;
+    }
+    box.appendChild(img);
+
+    const btn=document.createElement('a'); btn.className='download-btn';
+    if(zip){ btn.href=zip; btn.download=''; btn.innerText='Download'; }
+    else{ btn.style.display='none'; }
+    box.appendChild(btn);
+
+    grid.appendChild(box);
+  }
 </script>
 
 </body>
